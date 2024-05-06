@@ -1,0 +1,21 @@
+id,age,deuxiemevoiture,nbenfantsacharge,sexe,situationfamiliale,taux
+5,80,False,3,M,En Couple,530.0
+10,22,False,1,M,En Couple,154.0
+16,22,True,3,M,En Couple,411.0
+13,19,False,0,F,Celibataire,212.0
+11,79,False,2,F,En Couple,981.0
+1,21,False,0,F,Celibataire,1396.0
+19,35,False,0,M,Celibataire,589.0
+8,43,False,0,F,Celibataire,431.0
+2,35,False,0,M,Celibataire,223.0
+4,26,True,3,F,En Couple,420.0
+18,54,True,3,F,En Couple,452.0
+15,60,True,0,M,En Couple,524.0
+20,59,True,0,M,En Couple,748.0
+7,59,False,2,F,En Couple,572.0
+6,27,False,2,F,En Couple,153.0
+9,64,False,0,M,Celibataire,559.0
+14,34,False,0,F,En Couple,1112.0
+17,58,False,0,M,En Couple,1192.0
+12,55,False,0,M,Celibataire,588.0
+3,48,False,0,M,Celibataire,401.0

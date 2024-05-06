@@ -1,0 +1,98 @@
+# HIVE
+
+
+nohup hive --service metastore > hive_metastore.log 2>&1 &
+
+nohup hiveserver2 > hive_server.log 2>&1 &
+
+beeline -u jdbc:hive2://localhost:10000 vagrant
+
+
+> create database if not exists mbds_g5;
+> use mbds_g5;
+
+
+
+# from hdfs
+
+> create external table if not exists CO2(
+id int,
+marque string,
+bonus_malus int,
+rejets_CO2 int,
+cout_energie int)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+STORED AS TEXTFILE LOCATION 'hdfs:/user/vagrant/csv_data/CO2'
+TBLPROPERTIES ('skip.header.line.count'='1');
+
+> select * from CO2; 4
+
+> select * from CO2
+where marque = 'BMW';
+
+> DROP TABLE IF EXISTS CO2;
+
+
+> create external table if not exists Catalogue(
+id int,
+marque string,
+nom string,
+puissance int,
+longueur string,
+nbPlaces int,
+nbPortes int,
+couleur string,
+occasion boolean,
+prix int)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+STORED AS TEXTFILE LOCATION 'hdfs:/user/vagrant/csv_data/Catalogue'
+TBLPROPERTIES ('skip.header.line.count'='1');
+
+> select * from Catalogue;
+
+
+
+
+# from mongo
+
+> create external table client(
+id int,
+age int,
+sexe string,
+taux int,
+situationFamiliale string,
+nbEnfantsAcharge int,
+deuxiemeVoiture string,
+immatriculation string)
+STORED BY 'com.mongodb.hadoop.hive.MongoStorageHandler'
+WITH SERDEPROPERTIES('mongo.columns.mapping'='{"id":"ID", "age":"age", "sexe":"sexe", "taux":"taux", "situationFamiliale":"situationFamiliale", "nbEnfantsAcharge":"nbEnfantsAcharge", "deuxiemeVoiture":"deuxiemeVoiture", "immatriculation":"immatriculation"}')
+TBLPROPERTIES('mongo.uri'='mongodb://localhost:27017/mbds.client');
+
+
+> create external table immatriculation(
+id int,
+immatriculation string,
+nom string,
+puissance int,
+longueur string,
+nbPlaces int,
+nbPortes int,
+couleur string,
+occasion string,
+prix int)
+STORED BY 'com.mongodb.hadoop.hive.MongoStorageHandler'
+WITH SERDEPROPERTIES('mongo.columns.mapping'='{"id":"ID", "immatriculation":"immatriculation", "nom":"nom", "puissance":"puissance", "longueur":"longueur", "nbPlaces":"nbPlaces", "nbPortes":"nbPortes", "couleur":"couleur"}, "occasion":"occasion"}, "prix":"prix"}')
+TBLPROPERTIES('mongo.uri'='mongodb://localhost:27017/mbds.immatriculation');
+
+
+select * from client limit 10;
+
+
+
+
+# from cassandra
+
+On a utilisé un script python (dataFromCasandraToHive.py)
+
+
+

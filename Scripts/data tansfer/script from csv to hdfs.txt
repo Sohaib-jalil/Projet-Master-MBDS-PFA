@@ -1,0 +1,5 @@
+hadoop fs -mkdir csv_data
+hadoop fs -mkdir csv_data/CO2
+hadoop fs -mkdir csv_data/Catalogue
+hadoop fs -copyFromLocal clean_data/cleaned_CO2.csv csv_data/CO2/CO2.csv
+hadoop fs -copyFromLocal clean_data/cleaned_Catalogue.csv csv_data/Catalogue/Catalogue.csv

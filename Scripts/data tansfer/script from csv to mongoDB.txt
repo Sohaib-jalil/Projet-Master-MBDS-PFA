@@ -1,0 +1,28 @@
+#MongoDB
+
+mongo
+
+> use mbds
+
+> db.createCollection("client");
+
+> db.createCollection("immatriculation");
+
+mongoimport --db mbds --collection client --type csv --headerline --file clean_data/Cleaned_Clients.csv
+
+mongoimport --db mbds --collection immatriculation --type csv --headerline --file clean_data/cleaned_Immatriculations.csv
+
+> db.client.find({});
+
+> db.immatriculation.find({});
+
+> show collections;
+
+> db.client.drop();
+
+> db.immatriculation.drop();
+
+> db.client.stats()
+
+> db.immatriculation.stats()
+

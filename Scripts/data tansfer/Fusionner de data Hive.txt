@@ -1,0 +1,62 @@
+HIVE
+
+#JOIN
+
+
+
+CREATE TABLE IF NOT EXISTS CO2JoinCatalogue (
+    id int,
+    marque string,
+    nom string,
+    puissance int,
+    longueur string,
+    nbPlaces int,
+    nbPortes int,
+    couleur string,
+    occasion boolean,
+    prix int,
+    bonus_malus int,
+    rejets_CO2 int,
+    cout_energie int
+)
+STORED AS TEXTFILE;
+
+INSERT OVERWRITE TABLE CO2JoinCatalogue
+SELECT c.id, c.marque, c.nom, c.puissance, c.longueur, c.nbPlaces, c.nbPortes, c.couleur, c.occasion, c.prix,
+       co.bonus_malus, co.rejets_CO2, co.cout_energie
+FROM Catalogue c
+JOIN CO2 co ON c.marque = co.marque;
+
+
+
+
+CREATE TABLE IF NOT EXISTS immatriculationJoinClient (
+    id int,
+    age int,
+    sexe string,
+    taux int,
+    situationFamiliale string,
+    nbEnfantsAcharge int,
+    deuxiemeVoiture string,
+    immatriculation string,
+    nom string,
+    puissance int,
+    longueur string,
+    nbPlaces int,
+    nbPortes int,
+    couleur string,
+    occasion string,
+    prix int
+)
+STORED AS TEXTFILE;
+
+INSERT OVERWRITE TABLE immatriculationJoinClient
+SELECT c.id, c.age,c.sexe, c.taux, c.situationFamiliale, c.nbEnfantsAcharge, c.deuxiemeVoiture, c.immatriculation, i.nom, i.puissance, i.longueur, i.nbPlaces, i.nbPortes, i.couleur, i.occasion, i.prix
+FROM client c
+INNER JOIN immatriculation i ON c.immatriculation = i.immatriculation;
+
+
+
+# solve the size limit problem in hive
+set hive.auto.convert.join = false;
+

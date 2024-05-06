@@ -1,0 +1,28 @@
+# Casandra
+
+sudo systemctl start cassandra
+
+cqlsh localhost
+
+> CREATE KEYSPACE IF NOT EXISTS ks WITH replication = {'class': 'NetworkTopologyStrategy'};
+
+> use ks;
+
+> CREATE TABLE IF NOT EXISTS ks.marketing (
+    id INT PRIMARY KEY,
+    age INT,
+    sexe TEXT,
+    taux FLOAT,
+    situationFamiliale TEXT,
+    nbEnfantsAcharge INT,
+    deuxiemeVoiture BOOLEAN
+);
+
+> select * from marketing;
+
+> COPY ks.marketing (id, age, sexe, taux, situationFamiliale, nbEnfantsAcharge, deuxiemeVoiture) FROM './clean_data/Cleaned_Marketing.csv' WITH HEADER = true AND DELIMITER=',' AND NULL='NULL' AND ENCODING='latin1';
+
+> SELECT * FROM marketing LIMIT 10;
+
+> DROP TABLE marketing;
+

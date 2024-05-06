@@ -1,0 +1,21 @@
+id,age,taux,nbenfantsacharge,sexe,situationfamiliale,deuxiemevoiture,Prediction
+1,21,1396,0,F,Celibataire,0,routieres
+2,35,223,0,M,Celibataire,0,routieres
+3,48,401,0,M,Celibataire,0,routieres
+4,26,420,3,F,En Couple,1,familiales
+5,80,530,3,M,En Couple,0,luxe
+6,27,153,2,F,En Couple,0,routieres
+7,59,572,2,F,En Couple,0,routieres
+8,43,431,0,F,Celibataire,0,routieres
+9,64,559,0,M,Celibataire,0,routieres
+10,22,154,1,M,En Couple,0,routieres
+11,79,981,2,F,En Couple,0,routieres
+12,55,588,0,M,Celibataire,0,routieres
+13,19,212,0,F,Celibataire,0,routieres
+14,34,1112,0,F,En Couple,0,routieres
+15,60,524,0,M,En Couple,1,routieres
+16,22,411,3,M,En Couple,1,familiales
+17,58,1192,0,M,En Couple,0,routieres
+18,54,452,3,F,En Couple,1,familiales
+19,35,589,0,M,Celibataire,0,routieres
+20,59,748,0,M,En Couple,1,routieres
